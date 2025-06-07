@@ -11,18 +11,17 @@ export default function LoginPage({ loginfunc }) {
     const [password, setPassword] = useState('')
 
     const handleUsername = (e) => {
-        preventDefault()
         setUsername(e.target.value)
     }
 
-    const handlePassword= (e) => {
-        preventDefault()
+    const handlePassword = (e) => {
         setPassword(e.target.value)
     }
 
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
         const getUserData = localStorage.getItem(username)
 
         if (getUserData && getUserData === password) {
@@ -38,19 +37,19 @@ export default function LoginPage({ loginfunc }) {
             <div className="limiter">
                 <div className="container-login100">
                     <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-                        <form className="login100-form validate-form" onSubmit={handleSubmit}>
+                        <form action='POST' className="login100-form validate-form" onSubmit={handleSubmit}>
                             <span className="login100-form-title p-b-49">
                                 Вход
                             </span>
 
                             <div className="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
                                 <span className="label-input100">Имя пользователя</span>
-                                <input className="input100" onChange={setUsername} type="text" name="username" placeholder="Введите свое имя пользователя" />
+                                <input className="input100" onChange={handleUsername} type="text" name="username" placeholder="Введите свое имя пользователя" />
                             </div>
 
                             <div className="wrap-input100 validate-input" data-validate="Password is required">
                                 <span className="label-input100">Пароль</span>
-                                <input className="input100" onChange={setPassword}  type="password" name="pass" placeholder="Введите свой пароль"/>
+                                <input className="input100" onChange={handlePassword}  type="password" name="pass" placeholder="Введите свой пароль"/>
                             </div>
                             
                             <div className="container-login100-form-btn">
